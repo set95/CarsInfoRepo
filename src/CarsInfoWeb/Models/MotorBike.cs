@@ -11,14 +11,13 @@ namespace CarsInfoWeb.Models
         private int CubicCapacity { get; set; }
         private string Type { get; set; }
 
-        public MotorBike(string brand, string model, int capacity, string type,decimal price)
+        /*public MotorBike(string brand, string model, int capacity, string type,decimal price)
         {
-            //this.Id = Guid.NewGuid();
             this.Brand = brand;
             this.Model = model;
             this.CubicCapacity = capacity;
             this.Type = type;
             this.Price = price;
-        }
+        }*/
     }
 }
