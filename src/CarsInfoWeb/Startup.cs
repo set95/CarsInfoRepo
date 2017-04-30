@@ -40,6 +40,12 @@ namespace CarsInfoWeb
 
             services.AddMvc();
 
+            //services.AddCaching();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.CookieName = ".CarsInfoWeb";
+            });
+
             var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;";
             services.AddDbContext<CarsInfoContext>(options => options.UseSqlServer(connection));
            // services.AddDbContext<CarsInfoContext>(options =>
@@ -51,6 +57,8 @@ namespace CarsInfoWeb
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            app.UseSession();
 
             app.UseApplicationInsightsRequestTelemetry();
 

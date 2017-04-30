@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CarsInfoWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Web;
+using Microsoft.AspNetCore.Http;
 
 namespace CarsInfoWeb.Controllers
 {
@@ -34,7 +35,7 @@ namespace CarsInfoWeb.Controllers
        
         public IActionResult Index()
         {
-            if(Session["user" == null])
+            if(HttpContext.Session.GetString("user") == null)
             {
                 return RedirectToAction("Login", "Login");
             }

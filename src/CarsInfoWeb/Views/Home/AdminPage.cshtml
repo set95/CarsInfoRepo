@@ -1,15 +1,16 @@
 ﻿@using CarsInfoWeb.Models;
-@{ 
+@using Microsoft.AspNetCore.Mvc;
+@using Microsoft.AspNetCore.Http;
+@{
     ViewBag.Title = "AdminPage";
 }
 
 <h2>Admin Login Page</h2>
 @{ 
-    var user = Session["user"] as User;
+    //var user =  HttpContext.Session.GetString("user");
 }
-
-@if (user != null)
-{
-    <h3>Welcome @user.Name</h3>
+<h3>Welcome @user</h3>
+@{
+    
     @Html.ActionLink("Logout", "Logout", "Index")
 }
