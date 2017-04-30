@@ -1,0 +1,16 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+@using(Html.BeginForm())
+{
+    <div>@Html.Label("Login name: ")</div>
+    <div>@Html.TextBox("name")</div>
+    <div>@Html.Label("Password: ")</div>
+    <div>@Html.TextBox("password")</div>
+    <input type="submit" value="Login"/>
+}

@@ -1,0 +1,15 @@
+﻿@using CarsInfoWeb.Models;
+@{ 
+    ViewBag.Title = "AdminPage";
+}
+
+<h2>Admin Login Page</h2>
+@{ 
+    var user = Session["user"] as User;
+}
+
+@if (user != null)
+{
+    <h3>Welcome @user.Name</h3>
+    @Html.ActionLink("Logout", "Logout", "Index")
+}
