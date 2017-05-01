@@ -1,0 +1,27 @@
+﻿@using System.Threading.Tasks
+@using CarsInfoWeb.Models
+@model IEnumerable<CarsInfoWeb.Models.Car>
+@{
+    ViewData["Title"] = "AllCars";
+}
+
+@*<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>*@
+<h2>There is @Model.Count() cars in our database</h2>
+<h3>List of cars:</h3>
+<br/>
+<ul>
+@foreach (var car in @Model)
+{
+    <li>@car.CarId  @car.Brand    @car.Model</li>
+}
+</ul>

@@ -1,9 +1,6 @@
-﻿@model IEnumerable<CarsInfoWeb.Models.Car>
-@{
-    ViewData["Title"] = "Contact";
+﻿@{
+    ViewData["Title"] = "GetCar";
 }
-<h2>@ViewData["Title"].</h2>
-<h3>@ViewData["Message"]</h3>
 
 <address>
     One Microsoft Way<br />
@@ -17,8 +14,4 @@
     <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
 </address>
 
-@foreach (var car in @Model)
-{
-    <p> @car.Brand </p>
 
-}

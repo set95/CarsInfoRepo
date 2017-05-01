@@ -81,6 +81,10 @@ namespace CarsInfoWeb
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapRoute(
+                    name: "Car",
+                    template: "{controller=Cars}/{action=GetCar}/{id?}");
             });
         }
     }

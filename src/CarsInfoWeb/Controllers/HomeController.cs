@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CarsInfoWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Web;
+using CarsInfoWeb.Repositories;
 using Microsoft.AspNetCore.Http;
 
 namespace CarsInfoWeb.Controllers
@@ -12,12 +13,12 @@ namespace CarsInfoWeb.Controllers
     public class HomeController : Controller
     {
 
-        private readonly CarsInfoContext _context;
+        //private CarsRepositories repo = new CarsRepositories();
 
-        public HomeController(CarsInfoContext context)
-        {
-            _context = context;
-        }
+        //public HomeController(CarsInfoContext context)
+        //{
+        //    _context = context;
+        //}
 
         public Car car = new Car()
         {
@@ -62,8 +63,9 @@ namespace CarsInfoWeb.Controllers
         {
             ViewData["Message"] = "Your contact page.";
 
-            return View(_context.Cars);
+            return View();
         }
+
 
         public IActionResult Error()
         {
