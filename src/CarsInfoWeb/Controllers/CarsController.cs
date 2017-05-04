@@ -19,8 +19,6 @@ namespace CarsInfoWeb.Controllers
             repo = new CarsRepositories(context);
         }
 
-
-
         public IActionResult GetCar(int id)
         {
             var car = repo.GetCar(id);
@@ -41,11 +39,23 @@ namespace CarsInfoWeb.Controllers
             return View(repo.GetAllCars());
         }
 
-        //[HttpGet]
-        //public IActionResult CreateCustomer()
-        //{
-        //    var newCustomer = new DimCustomer();
-        //    return View(newCustomer);
-        //}
+        [HttpGet]
+        public IActionResult CreateCar()
+        {
+            var newCar = new Car();
+            return View(newCar);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateCar(Car newCar)
+        {
+            if (ModelState.IsValid)
+            {
+                newCar = repo.CreateCar(newCar);
+                return RedirectToAction("GetCar", new { CarId = newCar.CarId });
+            }
+            return View("CreateCar", newCar);
+        }
     }
 }

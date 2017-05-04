@@ -71,5 +71,21 @@ namespace CarsInfoWeb.Controllers
         {
             return View();
         }
+
+        public IActionResult Admin()
+        {
+            /*
+            _context.CatalogCars.Add(new CarsCatalog()
+            {
+                Cars = new List<Vehicle>()
+            });
+            _context.SaveChanges();
+            _context.Cars.Add(car);
+            
+            ViewData["Message"] = _context.CatalogCars.Count();
+            _context.SaveChanges();
+            */
+            return View("AdminPage");
+        }
     }
 }

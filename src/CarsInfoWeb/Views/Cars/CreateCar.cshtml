@@ -1,0 +1,43 @@
+﻿@using System.Threading.Tasks
+@using CarsInfoWeb.Models
+@model CarsInfoWeb.Models.Car
+
+@Html.ValidationSummary()
+<form asp-controller="Cars" asp-action="CreateCar" asp-antiforgery="true">
+    <dl>
+        <dt><b>Brand:</b></dt>
+        <dd><input asp-for="Brand"/></dd>
+    </dl>
+    <dl>
+        <dt><b>Model:</b></dt>
+        <dd><input asp-for="Model"/></dd>
+    </dl>
+    <dl>
+        <dt><b>Price:</b></dt>
+        <dd><input asp-for="Price"/></dd>
+    </dl>
+    <dl>
+        <dt><b>Year:</b></dt>
+        <dd><input asp-for="Year"/></dd>
+    </dl>
+    <dl>
+        <dt><b>Milage:</b></dt>
+        <dd><input asp-for="Mileage" /></dd>
+    </dl>
+    <dl>
+        <dt><b>Color:</b></dt>
+        <dd><input asp-for="Color" /></dd>
+    </dl>
+    <dl>
+        <dt><b>Fuel:</b></dt>
+        <dd><input asp-for="Fuel" /></dd>
+    </dl>
+    <dl>
+        <dt><b>Type:</b></dt>
+        <dd><input asp-for="Type" /></dd>
+    </dl>
+    <dl>
+        <dt>&nbsp;</dt>
+        <dd><button type="submit">Save</button></dd>
+    </dl>
+</form>

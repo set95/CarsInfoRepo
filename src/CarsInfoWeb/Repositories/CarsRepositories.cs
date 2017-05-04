@@ -20,6 +20,7 @@ namespace CarsInfoWeb.Repositories
 
         public Car CreateCar(Car newCar)
         {
+            newCar.CatalogId = 1;
             db.Cars.Add(newCar);
             db.SaveChanges();
             return newCar;
