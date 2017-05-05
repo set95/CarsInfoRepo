@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 
 namespace CarsInfoWeb.Models
 {
-    public class Admin
+    public class LoginViewModel
     {
-        public string Login { get; set; }
-
-        public string Name { get; set; }
+        public string Username { get; set; }
 
         public string Password { get; set; }
+
+        public bool RememberMe { get; set; }
+        public string ReturnUrl { get; set; }
     }
 }

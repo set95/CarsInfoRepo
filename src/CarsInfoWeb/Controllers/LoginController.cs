@@ -23,7 +23,7 @@ namespace CarsInfoWeb.Controllers
             if("admin".Equals(name) && "admin".Equals(password))
             {
                 //Session["user"] = new User() { Login = name, name = "Test Test" };
-                return RedirectToAction("AdminPage", "Home");
+                return RedirectToAction("AdminPage");
             }
             return View();
         }

@@ -35,10 +35,10 @@ namespace CarsInfoWeb.Controllers
        
         public IActionResult Index()
         {
-            if(HttpContext.Session.GetString("user") == null)
-            {
-                return RedirectToAction("Login", "Login");
-            }
+            //if(HttpContext.Session.GetString("user") == null)
+           // {
+           //     return RedirectToAction("Login", "Login");
+          //  }
             return View();
         }
 
