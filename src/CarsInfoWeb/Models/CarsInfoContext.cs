@@ -8,6 +8,7 @@ namespace CarsInfoWeb.Models
 {
     public class CarsInfoContext : DbContext
     {
+
         public CarsInfoContext(DbContextOptions<CarsInfoContext> options)
             : base(options)
         { }

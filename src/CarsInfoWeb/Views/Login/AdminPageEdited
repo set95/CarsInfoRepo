@@ -9,7 +9,7 @@
 @{ 
     //var user =  HttpContext.Session.GetString("user");
 }
-<h3>Welcome </h3>
+<h3>Welcome @user</h3>
 @{
     
     @Html.ActionLink("Logout", "Logout", "Index")

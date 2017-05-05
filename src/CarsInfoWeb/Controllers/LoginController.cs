@@ -15,7 +15,7 @@ namespace CarsInfoWeb.Controllers
         public IActionResult Login()
         {
       
-            return View();
+            return View("Login");
         }
         [HttpPost]
         public IActionResult Login(string name, string password)
@@ -23,7 +23,7 @@ namespace CarsInfoWeb.Controllers
             if("admin".Equals(name) && "admin".Equals(password))
             {
                 //Session["user"] = new User() { Login = name, name = "Test Test" };
-                return RedirectToAction("AdminPage");
+                return View("AdminPage");
             }
             return View();
         }
