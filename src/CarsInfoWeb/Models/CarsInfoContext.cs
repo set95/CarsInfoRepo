@@ -14,7 +14,5 @@ namespace CarsInfoWeb.Models
         { }
 
         public DbSet<Car> Cars { get; set; }
-        public DbSet<MotorBike> MotorBikes { get; set; }
-        public DbSet<CarsCatalog> CatalogCars { get; set; }
     }
 }

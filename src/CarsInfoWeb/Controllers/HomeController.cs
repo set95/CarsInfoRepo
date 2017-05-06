@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Web;
 using CarsInfoWeb.Repositories;
 using Microsoft.AspNetCore.Http;
+using Type = CarsInfoWeb.Models.Type;
 
 namespace CarsInfoWeb.Controllers
 {
@@ -20,19 +21,6 @@ namespace CarsInfoWeb.Controllers
         //    _context = context;
         //}
 
-        public Car car = new Car()
-        {
-            Brand = "Ford",
-            Model = "Focus",
-            Price = 4000M,
-            Year = 2002,
-            Mileage = 200000,
-            Color = "Ford",
-            CatalogId = 1,
-            Fuel = "diesel",
-            Type = "sedan"
-        };
-
        
         public IActionResult Index()
         {
@@ -40,6 +28,8 @@ namespace CarsInfoWeb.Controllers
            // {
            //     return RedirectToAction("Login", "Login");
           //  }
+
+            
             return View();
         }
 
@@ -85,7 +75,7 @@ namespace CarsInfoWeb.Controllers
             ViewData["Message"] = _context.CatalogCars.Count();
             _context.SaveChanges();
             */
-            return View("AdminPage");
+            return RedirectToAction("Login","Login");
         }
     }
 }

@@ -8,9 +8,10 @@ using CarsInfoWeb.Models;
 namespace CarsInfoWeb.Migrations
 {
     [DbContext(typeof(CarsInfoContext))]
-    partial class CarsInfoContextModelSnapshot : ModelSnapshot
+    [Migration("20170506030124_AddedEnumFuelTypeColor1")]
+    partial class AddedEnumFuelTypeColor1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
@@ -30,8 +31,6 @@ namespace CarsInfoWeb.Migrations
                     b.Property<int>("Mileage");
 
                     b.Property<string>("Model");
-
-                    b.Property<string>("Picture");
 
                     b.Property<decimal>("Price");
 

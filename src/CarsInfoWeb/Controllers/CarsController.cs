@@ -35,13 +35,16 @@ namespace CarsInfoWeb.Controllers
         public IActionResult Index()
         {
             //ViewBag.Title = "Customer List";
-
-            return View(repo.GetAllCars());
+            if (repo.GetAllCars() != null)
+            { 
+                return View(repo.GetAllCars());
+            }
+            return View();
         }
 
         [HttpGet]
         public IActionResult CreateCar()
-        {
+        {   
             var newCar = new Car();
             return View(newCar);
         }

@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace CarsInfoWeb.Models
 {
+    public enum Color {White,Silver,Black,Grey,Blue,Red,Brown,Green,Other}
     public abstract class Vehicle
     {
-        public int CarId { get; set; }
-        public string Brand { get; set; }
+        public string Make { get; set; }
         public string Model { get; set; }
         public decimal Price { get; set; }
         public int Year { get; set; }
         public int Mileage { get; set; }
-        public string Color { get; set; }
-        public int CatalogId { get; set; }
+        public Color Color { get; set; }
+        public string Picture { get; set; }
     }
 }
