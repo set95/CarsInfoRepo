@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CarsInfoWeb.Models;
 using CarsInfoWeb.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
@@ -32,6 +33,7 @@ namespace CarsInfoWeb.Controllers
             return View(car);
         }
 
+        
         public IActionResult Index()
         {
             //ViewBag.Title = "Customer List";
@@ -44,12 +46,21 @@ namespace CarsInfoWeb.Controllers
 
         [HttpGet]
         public IActionResult CreateCar()
-        {   
-            var newCar = new Car();
-            return View(newCar);
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var newCar = new Car();
+                return View(newCar);
+            }
+            else
+            {
+               return RedirectToAction("Login","Account");
+            }
+
         }
 
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public IActionResult CreateCar(Car newCar)
         {

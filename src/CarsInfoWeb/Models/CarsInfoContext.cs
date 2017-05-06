@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarsInfoWeb.Models
 {
-    public class CarsInfoContext : DbContext
+    public class CarsInfoContext : IdentityDbContext<ApplicationUser>
     {
 
         public CarsInfoContext(DbContextOptions<CarsInfoContext> options)
@@ -14,5 +15,6 @@ namespace CarsInfoWeb.Models
         { }
 
         public DbSet<Car> Cars { get; set; }
+        
     }
 }

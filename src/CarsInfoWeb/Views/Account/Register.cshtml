@@ -1,0 +1,27 @@
+﻿@using System.Threading.Tasks
+@using CarsInfoWeb.ViewModel
+@model CarsInfoWeb.ViewModel.RegisterViewModel
+
+
+<h2>Registration Account</h2>
+
+<form method="post" asp-controller="Account" asp-action="Register">
+
+    <div>
+        <label asp-for="Email"></label>
+        <div asp-validation-summary="All"></div>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div>
+        <label asp-for="ConfirmPassword"></label>
+        <input asp-for="ConfirmPassword" />
+        <span asp-validation-for="ConfirmPassword"></span>
+    </div>
+    <div><input type="submit" value="Register" /></div>
+</form>

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Web;
 using CarsInfoWeb.Repositories;
 using Microsoft.AspNetCore.Http;
-using Type = CarsInfoWeb.Models.Type;
+using Type = CarsInfoWeb.Models.CarType;
 
 namespace CarsInfoWeb.Controllers
 {

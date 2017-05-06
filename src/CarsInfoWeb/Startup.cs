@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CarsInfoWeb.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -39,6 +40,10 @@ namespace CarsInfoWeb
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<CarsInfoContext>()
+                .AddDefaultTokenProviders();
 
             //services.AddCaching();
             services.AddSession(options => {
@@ -75,6 +80,8 @@ namespace CarsInfoWeb
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
+
+            app.UseIdentity();
 
             app.UseMvc(routes =>
             {

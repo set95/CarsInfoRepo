@@ -26,15 +26,19 @@
     </dl>
     <dl>
         <dt><b>Color:</b></dt>
-        <dd><input asp-for="Color" /></dd>
+        <dd><select asp-for="Color" asp-items="Html.GetEnumSelectList<Color>()"></select></dd>
     </dl>
     <dl>
         <dt><b>Fuel:</b></dt>
-        <dd><input asp-for="Fuel" /></dd>
+        <dd><select asp-for="Fuel" asp-items="Html.GetEnumSelectList<Fuel>()"></select></dd>
     </dl>
     <dl>
         <dt><b>Type:</b></dt>
-        <dd><input asp-for="Type" /></dd>
+        <dd><select asp-for="Type" asp-items="Html.GetEnumSelectList<CarType>()"></select></dd>
+    </dl>
+    <dl>
+        <dt><b>Image:</b></dt>
+        <dd><input type="file" name="Image" accept=".png, .jpg, .jpeg"/></dd>
     </dl>
     <dl>
         <dt>&nbsp;</dt>
