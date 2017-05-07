@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
 
-
 namespace CarsInfoWeb.Models
 {
     public enum Color {White,Silver,Black,Grey,Blue,Red,Brown,Green,Yellow,Other}
@@ -25,8 +24,9 @@ namespace CarsInfoWeb.Models
         public Color Color { get; set; }
         [Display(Name = "Pricture of car")]
         public string Picture { get; set; }
+       // public DateTime DateTimeAdded { get; set; }///
         [ForeignKey("UserId")]
         public string UserId{ get; set; }
- 
+        
     }
 }
