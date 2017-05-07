@@ -9,18 +9,22 @@
 <h2>There are @Model.Count() cars in our database</h2>
 <h3>List of cars:</h3>
 <br />
-<h4>Error @ViewData["error"]</h4>
+@if (ViewBag.error!=null)
+{
+    <h3>! Error. @ViewBag.error</h3>
+}
+
 
 @foreach (var car in @Model)
 {
     <div>
         @if (car.Picture != "" && car.Picture != null)
         {
-            <img src="~/users_uploads/@car.UserId/@car.Picture" class="img-thumbnail" />
+            <img src="~/users_uploads/@car.UserId/@car.Picture" class="car-picture" />
         }
         else
         {
-            <img src="~/images/images.png" class="img-thumbnail" />
+            <img src="~/images/images.png" class="car-picture" />
         }
         @car.CarId  @car.Make    @car.Model @car.Mileage @car.Price @car.Type @car.Type
         <a asp-action="Delete" asp-route-id="@car.CarId">Edit</a> |

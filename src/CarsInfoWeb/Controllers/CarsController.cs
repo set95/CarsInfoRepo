@@ -82,7 +82,7 @@ namespace CarsInfoWeb.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateCar(/*[Bind("Make","Model","Price","Year","Mileage","Color","Fuel","Type")]*/Car newCar, IFormFile pictureFile)
+        public async Task<IActionResult> CreateCar(Car newCar, IFormFile pictureFile)
         {
             if (ModelState.IsValid)
             {
@@ -129,18 +129,18 @@ namespace CarsInfoWeb.Controllers
 
         [HttpGet]
         [Authorize]
-        public IActionResult Delete(int carId)
+        public IActionResult Delete(int id)
         {
-            bool carExist = _repo.DeleteCar(carId);
+            bool carExist = _repo.DeleteCar(id);
                 if (carExist)//User.IsInRole("Admin") 
             {
                  
                 return RedirectToAction("Index","Cars");
             }
             else
-            {
-                ViewData["error"] = "adada";
-                return RedirectToAction("Index", "Cars");
+                {
+                    ViewBag.error = "There is no car with this ID";
+                return View("Index",_repo.GetAllCars());
             }
 
         }
