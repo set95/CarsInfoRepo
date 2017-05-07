@@ -19,9 +19,18 @@
 <h2>There are @Model.Count() cars in our database</h2>
 <h3>List of cars:</h3>
 <br/>
-<ul>
+
+
 @foreach (var car in @Model)
 {
-    <li>@car.CarId  @car.Brand    @car.Model @car.Mileage @car.Price</li>
+    <div>
+    @if (car.Picture != "" && car.Picture != null)
+     {
+         <img src="~/users_uploads/@car.UserId/@car.Picture" class= "img-thumbnail"/>
+    }
+    else
+    {
+        <img src="~/images/images.png" class="img-thumbnail" />
+    }
+    @car.CarId  @car.Make    @car.Model @car.Mileage @car.Price @car.Type @car.Type</div>
 }
-</ul>

@@ -8,9 +8,10 @@ using CarsInfoWeb.Models;
 namespace CarsInfoWeb.Migrations
 {
     [DbContext(typeof(CarsInfoContext))]
-    partial class CarsInfoContextModelSnapshot : ModelSnapshot
+    [Migration("20170506171135_IdentityAdded")]
+    partial class IdentityAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
@@ -34,8 +35,6 @@ namespace CarsInfoWeb.Migrations
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<string>("Name");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
@@ -73,6 +72,8 @@ namespace CarsInfoWeb.Migrations
                     b.Property<int>("CarId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int?>("CarId1");
+
                     b.Property<int>("Color");
 
                     b.Property<int>("Fuel");
@@ -89,11 +90,11 @@ namespace CarsInfoWeb.Migrations
 
                     b.Property<int>("Type");
 
-                    b.Property<string>("UserId");
-
                     b.Property<int>("Year");
 
                     b.HasKey("CarId");
+
+                    b.HasIndex("CarId1");
 
                     b.ToTable("Cars");
                 });
@@ -203,6 +204,13 @@ namespace CarsInfoWeb.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CarsInfoWeb.Models.Car", b =>
+                {
+                    b.HasOne("CarsInfoWeb.Models.Car")
+                        .WithMany("AddedCars")
+                        .HasForeignKey("CarId1");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

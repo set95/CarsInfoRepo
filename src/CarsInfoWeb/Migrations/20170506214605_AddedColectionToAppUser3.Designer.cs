@@ -8,9 +8,10 @@ using CarsInfoWeb.Models;
 namespace CarsInfoWeb.Migrations
 {
     [DbContext(typeof(CarsInfoContext))]
-    partial class CarsInfoContextModelSnapshot : ModelSnapshot
+    [Migration("20170506214605_AddedColectionToAppUser3")]
+    partial class AddedColectionToAppUser3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
@@ -34,8 +35,6 @@ namespace CarsInfoWeb.Migrations
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<string>("Name");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
@@ -73,6 +72,8 @@ namespace CarsInfoWeb.Migrations
                     b.Property<int>("CarId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("ApplicationUserId");
+
                     b.Property<int>("Color");
 
                     b.Property<int>("Fuel");
@@ -94,6 +95,8 @@ namespace CarsInfoWeb.Migrations
                     b.Property<int>("Year");
 
                     b.HasKey("CarId");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Cars");
                 });
@@ -203,6 +206,13 @@ namespace CarsInfoWeb.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CarsInfoWeb.Models.Car", b =>
+                {
+                    b.HasOne("CarsInfoWeb.Models.ApplicationUser")
+                        .WithMany("CarsList")
+                        .HasForeignKey("ApplicationUserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

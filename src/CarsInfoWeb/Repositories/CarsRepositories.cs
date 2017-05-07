@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
 using CarsInfoWeb.Models;
@@ -20,7 +22,6 @@ namespace CarsInfoWeb.Repositories
 
         public Car CreateCar(Car newCar)
         {
-            newCar.CatalogId = 1;
             db.Cars.Add(newCar);
             db.SaveChanges();
             return newCar;
@@ -33,6 +34,7 @@ namespace CarsInfoWeb.Repositories
 
         public ICollection<Car> GetAllCars()
         {
+            var cars = db.Cars.AsQueryable();
             return db.Cars.ToList();
         }
     }
