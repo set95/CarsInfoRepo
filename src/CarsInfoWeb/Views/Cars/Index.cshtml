@@ -1,5 +1,6 @@
 ﻿@using System.Threading.Tasks
 @using CarsInfoWeb.Models
+@using Microsoft.DotNet.Cli.Utils
 @model IEnumerable<CarsInfoWeb.Models.Car>
 @{
     ViewData["Title"] = "AllCars";
@@ -18,7 +19,7 @@
 @foreach (var car in @Model)
 {
     <div>
-        @if (car.Picture != "" && car.Picture != null)
+        @if (!String.IsNullOrEmpty(car.Picture))
         {
             <img src="~/users_uploads/@car.UserId/@car.Picture" class="car-picture" />
         }
