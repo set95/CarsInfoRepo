@@ -117,11 +117,15 @@
                             <div class="form-group">
                                 <label class="form-label form-label-outside rd-input-label focus not-empty">Body Type:</label>
                                 <select id="form-car-search-body-type" name="body-type" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
-                                    <option value="1">Enter</option>
-                                    <option value="2">Hatchback</option>
-                                    <option value="3">Mini-MPVs</option>
-                                    <option value="4">Crossovers</option>
-                                    <option value="5">Coupes</option>
+                                    <option value="1">No</option>
+                                    <option value="2">SUV</option>
+                                    <option value="3">Truck</option>
+                                    <option value="4">Sedan</option>
+                                    <option value="5">Van</option>
+                                    <option value="6">Coupe</option>
+                                    <option value="7">Wagon</option>
+                                    <option value="8">Cabrio</option>
+                                    <option value="9">Hatchback</option>
                                 </select>
                             </div>
                         </div>
@@ -171,9 +175,15 @@
                         <div class="col-6 col-md-4">
                             <div class="form-group">
                                 <label class="form-label form-label-outside rd-input-label focus not-empty">Fuel type:</label>
-                          
-                                    <select asp-for="@Model.First().Fuel" asp-items="Html.GetEnumSelectList<Fuel>()"></select>
-                             
+                                <select id="form-quote-color" name="color" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                    <option selected value="1">No</option>
+                                    <option value="2">Diesel</option>
+                                    <option value="3">Benzin</option>
+                                    <option value="4">LPG</option>
+                                    <option value="5">Methane</option>
+                                    <option value="6">Hybrid</option>
+                                    <option value="7">Electric</option>
+                                </select>           
                             </div>
                         </div>
                     </div>
