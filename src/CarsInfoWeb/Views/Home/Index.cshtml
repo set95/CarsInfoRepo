@@ -64,7 +64,13 @@
                                 
                                 <div class="padding">
                                     <h2 class="text-center">@car.Make @car.Model</h2>
-                                    <h4 class="text-center"><a href="#">More info</a></h4>
+                                    <button type="button" class="btn btn-info center-block" data-toggle="collapse" data-target="#moreInfo">More information</button>
+                                    <div id="moreInfo" class="collapse">
+                                        <b>Mileage: </b>@car.Mileage <br />
+                                        <b>Price: </b>@car.Price <br />
+                                        <b>Style type: </b>@car.Type <br />
+                                        <b>Fuel type: </b>@car.Fuel <br />
+                                    </div>
                                 </div>
                                
                             </div>
