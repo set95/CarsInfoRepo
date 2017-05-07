@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
+using Vereyon.Web;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -124,6 +125,24 @@ namespace CarsInfoWeb.Controllers
                 return RedirectToAction("Index","Cars");
             }
             return View("CreateCar", newCar);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult Delete(int carId)
+        {
+            bool carExist = _repo.DeleteCar(carId);
+                if (carExist)//User.IsInRole("Admin") 
+            {
+                 
+                return RedirectToAction("Index","Cars");
+            }
+            else
+            {
+                ViewData["error"] = "adada";
+                return RedirectToAction("Index", "Cars");
+            }
+
         }
     }
 }
