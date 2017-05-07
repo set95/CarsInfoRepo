@@ -14,22 +14,22 @@ namespace CarsInfoWeb.Controllers
     public class HomeController : Controller
     {
 
-        //private CarsRepositories repo = new CarsRepositories();
+        public HomeController(CarsInfoContext context)
+        {
+            _repo = new CarsRepositories(context);
+        }
+        private readonly CarsRepositories _repo;
 
-        //public HomeController(CarsInfoContext context)
-        //{
-        //    _context = context;
-        //}
 
-       
+
         public IActionResult Index()
         {
-            //if(HttpContext.Session.GetString("user") == null)
-           // {
-           //     return RedirectToAction("Login", "Login");
-          //  }
 
-            
+            if (_repo.GetAllCars() != null)
+            {
+                return View(_repo.GetAllCars());
+            }
+
             return View();
         }
 
