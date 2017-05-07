@@ -42,7 +42,7 @@ namespace CarsInfoWeb.Repositories
         {
             var car = db.Cars.FirstOrDefault(c => c.CarId == carId);
             if (car == null) return false;
-            db.Remove(car);
+            db.Cars.Remove(car);
             db.SaveChanges();
             return true;
         }
