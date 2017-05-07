@@ -6,8 +6,11 @@
 }
 
 <h2>Admin Login Page</h2>
-
+@{ 
+    //var user =  HttpContext.Session.GetString("user");
+}
+<h3>Welcome @user</h3>
 @{
-
-    @Html.ActionLink("Logout", "Login", "Login")
+    
+    @Html.ActionLink("Logout", "Logout", "Index")
 }
