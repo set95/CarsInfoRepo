@@ -1,0 +1,47 @@
+﻿@using System.Threading.Tasks
+@using CarsInfoWeb.Models
+@model Car
+
+<form asp-controller="Cars" asp-action="Edit" asp-antiforgery="true" enctype="multipart/form-data">
+    <dl>
+        <dt><b>Make:</b></dt>
+        <dd><input asp-for="Make" value="@Model.Make"/></dd>
+    </dl>
+    <dl>
+        <dt><b>Model:</b></dt>
+        <dd><input asp-for="Model" value="@Model.Model" /></dd>
+    </dl>
+    <dl>
+        <dt><b>Price:</b></dt>
+        <dd><input asp-for="Price" value="@Model.Price" /></dd>
+    </dl>
+    <dl>
+        <dt><b>Year:</b></dt>
+        <dd><input asp-for="Year" value="@Model.Year" /></dd>
+    </dl>
+    <dl>
+        <dt><b>Milage:</b></dt>
+        <dd><input asp-for="Mileage" value="@Model.Mileage" /></dd>
+    </dl>
+    <dl>
+        <dt><b>Color:</b></dt>
+        <dd><select asp-for="Color" asp-items="Html.GetEnumSelectList<Color>()" value="@Model.Color"></select></dd>
+    </dl>
+    <dl>
+        <dt><b>Fuel:</b></dt>
+        <dd><select asp-for="Fuel" asp-items="Html.GetEnumSelectList<Fuel>()" value="@Model.Fuel"></select></dd>
+    </dl>
+    <dl>
+        <dt><b>Type:</b></dt>
+        <dd><select asp-for="Type" asp-items="Html.GetEnumSelectList<CarType>()" value="@Model.Type" ></select></dd>
+    </dl>
+    <dl>
+        <dt><b>Image:</b></dt>
+        <dd><input type="file" id="pictureFile" name="pictureFile" accept=".png, .jpg, .jpeg .gif" /></dd>
+    </dl>
+    <dl>
+        <dt>&nbsp;</dt>
+        <dd><button type="submit">Save</button></dd>
+    </dl>
+</form>
+@Html.ValidationSummary()

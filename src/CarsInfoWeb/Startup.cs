@@ -94,9 +94,14 @@ namespace CarsInfoWeb
                 routes.MapRoute(
                     name: "Car",
                     template: "{controller=Cars}/{action=GetCar}/{id?}");
+
                 routes.MapRoute(
                     name: "Delete",
                     template: "{controller=Cars}/{action=Delete}/{id?}");
+
+                routes.MapRoute(
+                    name: "Edit",
+                    template: "{controller=Cars}/{action=Edit}/{id?}");
             });
         }
     }

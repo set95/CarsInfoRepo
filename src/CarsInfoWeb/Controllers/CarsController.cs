@@ -144,5 +144,74 @@ namespace CarsInfoWeb.Controllers
             }
 
         }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult Edit(int id)
+        {
+            
+            if (_repo.IsCarValid(id))
+            {
+                Car car = _repo.GetCar(id);
+                return View("Edit",car);
+            }
+            else
+            {
+                ViewBag.error = "There is no car with this ID";
+                return View("Index", _repo.GetAllCars());
+            }
+
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Car car, IFormFile pictureFile)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (pictureFile != null)
+                {
+                    var extension = Path.GetExtension(pictureFile.FileName).ToLower();
+
+                    if ((extension == ".jpg") || (extension == ".png") || (extension == ".jpeg") ||
+                        (extension == ".gif"))
+                    {
+                        var userFolderPath = Path.Combine(_environment.WebRootPath, "users_uploads",user.Id);
+
+                        Directory.Delete(userFolderPath,true);
+                        Directory.CreateDirectory(userFolderPath);
+                        string fileName = Path.GetFileName(pictureFile.FileName);
+                        if (fileName != null)
+                        {
+                            using (
+                                FileStream fs = new FileStream(Path.Combine(userFolderPath, fileName),
+                                    FileMode.Create)
+                            )
+                            {
+                                await pictureFile.CopyToAsync(fs);
+                                car.Picture = fileName;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Unsupported file format.");
+                        return View(car);
+
+                    }
+                }
+                else
+                {
+                    car.Picture = "";
+                }
+
+                _repo.EditCar(car);
+                return RedirectToAction("Index", "Cars");
+            }
+            return View("Edit", car);
+        }
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿@using System.Threading.Tasks
 @using CarsInfoWeb.Models
-@using Microsoft.DotNet.Cli.Utils
+
 @model IEnumerable<CarsInfoWeb.Models.Car>
 @{
     ViewData["Title"] = "AllCars";
@@ -28,7 +28,7 @@
             <img src="~/images/images.png" class="car-picture" />
         }
         @car.CarId  @car.Make    @car.Model @car.Mileage @car.Price @car.Type @car.Type
-        <a asp-action="Delete" asp-route-id="@car.CarId">Edit</a> |
+        <a asp-action="Edit" asp-route-id="@car.CarId">Edit</a> |
         <a asp-action="Delete" asp-route-id="@car.CarId">Delete</a>
     </div>
 }
