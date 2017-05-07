@@ -2,50 +2,82 @@
 @using CarsInfoWeb.Models
 @model Car
 
-<form asp-controller="Cars" asp-action="Edit" asp-antiforgery="true" enctype="multipart/form-data">
-    <dl>
-        <dt><b>Make:</b></dt>
-        <dd><input asp-for="Make" value="@Model.Make"/></dd>
-    </dl>
-    <dl>
-        <dt><b>Model:</b></dt>
-        <dd><input asp-for="Model" value="@Model.Model" /></dd>
-    </dl>
-    <dl>
-        <dt><b>Price:</b></dt>
-        <dd><input asp-for="Price" value="@Model.Price" /></dd>
-    </dl>
-    <dl>
-        <dt><b>Year:</b></dt>
-        <dd><input asp-for="Year" value="@Model.Year" /></dd>
-    </dl>
-    <dl>
-        <dt><b>Milage:</b></dt>
-        <dd><input asp-for="Mileage" value="@Model.Mileage" /></dd>
-    </dl>
-    <dl>
-        <dt><b>Color:</b></dt>
-        <dd><select asp-for="Color" asp-items="Html.GetEnumSelectList<Color>()" value="@Model.Color"></select></dd>
-    </dl>
-    <dl>
-        <dt><b>Fuel:</b></dt>
-        <dd><select asp-for="Fuel" asp-items="Html.GetEnumSelectList<Fuel>()" value="@Model.Fuel"></select></dd>
-    </dl>
-    <dl>
-        <dt><b>Type:</b></dt>
-        <dd><select asp-for="Type" asp-items="Html.GetEnumSelectList<CarType>()" value="@Model.Type" ></select></dd>
-    </dl>
-    <dl>
-        <dt><b>Image:</b></dt>
-        <dd><input type="file" id="pictureFile" name="pictureFile" accept=".png, .jpg, .jpeg .gif" /></dd>
-    </dl>
-    <dl>
-        <input type="hidden" asp-for="CarId" value="@Model.CarId" />
-        <input type="hidden" asp-for="UserId" value="@Model.UserId" />
-    </dl>
-    <dl>
-        <dt>&nbsp;</dt>
-        <dd><button type="submit">Save</button></dd>
-    </dl>
-</form>
+<div class="container">
+    <div class="row">
+        <br />
+        <form asp-controller="Cars" asp-action="Edit" asp-antiforgery="true" enctype="multipart/form-data">
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Make: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Enter make" asp-for="Make" value="@Model.Make">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Model: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Enter model" asp-for="Model"  value="@Model.Model">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Price: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Enter price" asp-for="Price"  value="@Model.Price">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Year: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Enter year" asp-for="Year" value="@Model.Year">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Mileage: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Enter Mileage" asp-for="Mileage" value="@Model.Mileage">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Color: </label>
+                <div class="col-sm-10">
+                    <select asp-for="Color" asp-items="Html.GetEnumSelectList<Color>()" value="@Model.Color"></select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Fuel: </label>
+                <div class="col-sm-10">
+                    <select asp-for="Fuel" asp-items="Html.GetEnumSelectList<Fuel>()" value="@Model.Fuel"></select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Type: </label>
+                <div class="col-sm-10">
+                    <select asp-for="Type" asp-items="Html.GetEnumSelectList<CarType>()"  value="@Model.Type"></select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="exampleInputFile" class="col-sm-2 col-form-label">Image: </label>
+                <div class="col-sm-10">
+                    <input type="file" id="pictureFile" name="pictureFile" accept=".png, .jpg, .jpeg .gif" />
+                </div>
+            </div>
+
+            <dl>
+                <input type="hidden" asp-for="CarId" value="@Model.CarId" />
+                <input type="hidden" asp-for="UserId" value="@Model.UserId" />
+            </dl>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+           
+        </form>
+    </div>
+</div>
 @Html.ValidationSummary()
