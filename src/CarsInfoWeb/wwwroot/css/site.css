@@ -1,4 +1,5 @@
 ﻿body {
+    font-family: 'Source Sans Pro', sans-serif;
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -45,3 +46,17 @@ textarea {
     height: auto;
 }
 
+.offer-wrap {
+    background: #f2f2f2;
+    position: relative;
+}
+
+.padding {
+    padding: 5px 10px;
+    box-shadow: inset 0 10px 4px -8px rgba(0,0,0,0.2);
+}
+
+.latestCars{
+    display: block;
+    max-width: 360px;
+}
