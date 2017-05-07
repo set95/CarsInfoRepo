@@ -32,15 +32,17 @@
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">CarsInfoWeb</a>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav navbar-left">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <!-- <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li> -->
                     <li><a asp-area="" asp-controller="Cars" asp-action="Index">Cars</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li><a asp-area="" asp-controller="Account" asp-action="Logout">Logout</a></li>
-                        <li><a>@User.Identity.Name, You are logged in.</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Logout" class="right">Logout</a></li>
+                        <li><a>Welcome, @User.Identity.Name.</a></li>
                     }
                     else
                     {
