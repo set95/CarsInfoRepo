@@ -64,11 +64,9 @@ namespace CarsInfoWeb.Controllers
                 var newCar = new Car();
                 return View();
             }
-            else
-            {
+            else{
                return RedirectToAction("Login","Account");
-            }
-
+                }
         }
 
         public async Task<string> GetCurrentUserId()
@@ -106,15 +104,12 @@ namespace CarsInfoWeb.Controllers
                             }
                         }
                     }
-                    else
-                    {
+                    else{
                         ModelState.AddModelError("", "Unsupported file format.");
-                        return View(newCar);
-
+                        return View(newCar);                  
                     }
                 }
-                else
-                {
+                else{
                     newCar.Picture = "";
                 }
                 newCar.UserId = user.Id;
