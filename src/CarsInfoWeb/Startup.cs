@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace CarsInfoWeb
 {
@@ -37,6 +38,7 @@ namespace CarsInfoWeb
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();

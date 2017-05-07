@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CarsInfoWeb.Models;
 using CarsInfoWeb.Repositories;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Hosting.Internal;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,16 +18,22 @@ namespace CarsInfoWeb.Controllers
 {
     public class CarsController : Controller
     {
-        private readonly CarsRepositories repo;
+        private SignInManager<ApplicationUser> _signInManager;
+        private UserManager<ApplicationUser> _userManager;
+        private readonly CarsRepositories _repo;
+        private IHostingEnvironment _environment;
 
-        public CarsController(CarsInfoContext context)
+        public CarsController(CarsInfoContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IHostingEnvironment environment)
         {
-            repo = new CarsRepositories(context);
+            _repo = new CarsRepositories(context);
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _environment = environment;
         }
 
         public IActionResult GetCar(int id)
         {
-            var car = repo.GetCar(id);
+            var car = _repo.GetCar(id);
             if (car == null)
             {
                 ViewBag.Message = id;
@@ -37,9 +48,9 @@ namespace CarsInfoWeb.Controllers
         public IActionResult Index()
         {
             //ViewBag.Title = "Customer List";
-            if (repo.GetAllCars() != null)
+            if (_repo.GetAllCars() != null)
             { 
-                return View(repo.GetAllCars());
+                return View(_repo.GetAllCars());
             }
             return View();
         }
@@ -50,7 +61,7 @@ namespace CarsInfoWeb.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 var newCar = new Car();
-                return View(newCar);
+                return View();
             }
             else
             {
@@ -59,15 +70,50 @@ namespace CarsInfoWeb.Controllers
 
         }
 
+        public async Task<string> GetCurrentUserId()
+        {
+            ApplicationUser usr = await GetCurrentUserAsync();
+            return usr?.Id;
+        }
+
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateCar(Car newCar)
+        public async Task<IActionResult> CreateCar(Car newCar,IFormFile pictureFile)
         {
             if (ModelState.IsValid)
             {
-                newCar = repo.CreateCar(newCar);
-                return RedirectToAction("GetCar", new { CarId = newCar.CarId });
+                var user = await _userManager.GetUserAsync(User);
+                if (pictureFile != null)
+                {
+                    if (pictureFile.ContentType.Contains("image"))
+                    {
+
+                        var uploadPath = Path.Combine(_environment.WebRootPath, "users_uploads");
+                        Directory.CreateDirectory(Path.Combine(uploadPath, user.Id));
+                        string fileName = Path.GetFileName(pictureFile.FileName);
+                        if (fileName != null)
+                        {
+                            using (
+                                FileStream fs = new FileStream(Path.Combine(uploadPath, user.Id, fileName),
+                                    FileMode.Create)
+                            )
+                            {
+                                await pictureFile.CopyToAsync(fs);
+                                newCar.Picture = fileName;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        newCar.Picture = "";
+                    }
+                }
+                newCar.UserId = user.Id;
+                newCar =  _repo.CreateCar(newCar);
+                return RedirectToAction("Index","Cars");
             }
             return View("CreateCar", newCar);
         }

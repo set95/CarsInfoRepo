@@ -3,7 +3,7 @@
 @model CarsInfoWeb.Models.Car
 
 @Html.ValidationSummary()
-<form asp-controller="Cars" asp-action="CreateCar" asp-antiforgery="true">
+<form asp-controller="Cars" asp-action="CreateCar" asp-antiforgery="true" enctype="multipart/form-data">
     <dl>
         <dt><b>Make:</b></dt>
         <dd><input asp-for="Make"/></dd>

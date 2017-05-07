@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace CarsInfoWeb.Models
 {
-    public enum Color {White,Silver,Black,Grey,Blue,Red,Brown,Green,Other}
+    public enum Color {White,Silver,Black,Grey,Blue,Red,Brown,Green,Yellow,Other}
     public abstract class Vehicle
     {
         public string Make { get; set; }
@@ -25,8 +25,8 @@ namespace CarsInfoWeb.Models
         public Color Color { get; set; }
         [Display(Name = "Pricture of car")]
         public string Picture { get; set; }
-        /*[ForeignKey("UserId")]
-        public int UserId { get; set; }
-        */
+        [ForeignKey("UserId")]
+        public string UserId{ get; set; }
+ 
     }
 }

@@ -8,9 +8,10 @@ using CarsInfoWeb.Models;
 namespace CarsInfoWeb.Migrations
 {
     [DbContext(typeof(CarsInfoContext))]
-    partial class CarsInfoContextModelSnapshot : ModelSnapshot
+    [Migration("20170506220538_AddedNameRmCollection3")]
+    partial class AddedNameRmCollection3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
