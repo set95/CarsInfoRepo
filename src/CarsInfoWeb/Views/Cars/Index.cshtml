@@ -15,20 +15,30 @@
     <h3>! Error. @ViewBag.error</h3>
 }
 
-
-@foreach (var car in @Model)
-{
-    <div>
-        @if (!String.IsNullOrEmpty(car.Picture))
-        {
-            <img src="~/users_uploads/@car.UserId/@car.Picture" class="car-picture" />
-        }
-        else
-        {
-            <img src="~/images/images.png" class="car-picture" />
-        }
-         @car.Make    @car.Model @car.Mileage @car.Price @car.Type @car.Fuel 
-        <a asp-action="Edit" asp-route-id="@car.CarId">Edit</a> |
-        <a asp-action="Delete" asp-route-id="@car.CarId">Delete</a>
-    </div>
-}
+<div class="row">
+    @foreach (var car in @Model)
+    {
+        <div class="col-sm-3 col-md-3">
+            @if (!String.IsNullOrEmpty(car.Picture))
+            {
+                <img src="~/users_uploads/@car.UserId/@car.Picture" class="car-picture" />
+            }
+            else
+            {
+                <img src="~/images/images.png" class="car-picture" />
+            }
+        </div>
+        <div class="col-sm-3 col-lg-2">
+            <b>Make: </b>@car.Make <br />
+            <b>Model: </b>@car.Model <br />
+            <b>Mileage: </b>@car.Mileage <br /> 
+            <b>Price: </b>@car.Price <br />
+            <b>Style type: </b>@car.Type <br />
+            <b>Fuel type: </b>@car.Fuel <br />
+            <hr />
+            <a asp-action="Edit" asp-route-id="@car.CarId">Edit</a> |
+            <a asp-action="Delete" asp-route-id="@car.CarId">Delete</a>
+        </div>
+        
+    }
+</div>

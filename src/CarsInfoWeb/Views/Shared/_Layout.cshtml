@@ -34,9 +34,17 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a asp-area="" asp-controller="Cars" asp-action="CreateCar">Add new car</a></li>
                     <!-- <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li> -->
-                    <li><a asp-area="" asp-controller="Cars" asp-action="Index">Cars</a></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cars<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">View all cars</a></li>
+                            <li class="divider"></li>
+                            <li><a asp-area="" asp-controller="Cars" asp-action="Index">View my cars</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (User.Identity.IsAuthenticated)

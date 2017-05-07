@@ -1,6 +1,5 @@
 ﻿@using System.Threading.Tasks
 @using CarsInfoWeb.Models
-@model CarsInfoWeb.Models.Car
 @model IEnumerable<CarsInfoWeb.Models.Car>
 @{
     ViewData["Title"] = "Home Page";
@@ -171,7 +170,9 @@
                             <div class="form-group">
                                 <label class="form-label form-label-outside rd-input-label focus not-empty">Fuel type:</label>
                           
-                                    <select   asp-for="Fuel" asp-items="Html.GetEnumSelectList<Fuel>()"></select>
+                                    <!--
+                                        <select   asp-for="Fuel" asp-items="Html.GetEnumSelectList<Fuel>()"></select>
+                                         -->
                              
                             </div>
                         </div>
