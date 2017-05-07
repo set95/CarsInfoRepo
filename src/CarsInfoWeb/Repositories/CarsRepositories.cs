@@ -33,12 +33,15 @@ namespace CarsInfoWeb.Repositories
             return car;
         }
 
-        public ICollection<Car> GetAllCars()
-        {
-            var cars = db.Cars.AsQueryable();
-            return db.Cars.ToList();
-        }
+        
+      public ICollection<Car> GetAllCars()
+      {
 
+          var cars = db.Cars.AsQueryable();
+          return db.Cars.ToList();
+        
+     }
+      
         public bool DeleteCar(int carId)
         {
             var car = db.Cars.FirstOrDefault(c => c.CarId == carId);
