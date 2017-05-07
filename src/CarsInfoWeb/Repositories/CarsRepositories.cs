@@ -37,5 +37,14 @@ namespace CarsInfoWeb.Repositories
             var cars = db.Cars.AsQueryable();
             return db.Cars.ToList();
         }
+
+        public bool DeleteCar(int carId)
+        {
+            var car = db.Cars.FirstOrDefault(c => c.CarId == carId);
+            if (car == null) return false;
+            db.Remove(car);
+            db.SaveChanges();
+            return true;
+        }
     }
 }
