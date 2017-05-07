@@ -19,9 +19,9 @@ namespace CarsInfoWeb.Controllers
     public class CarsController : Controller
     {
         private SignInManager<ApplicationUser> _signInManager;
-        private UserManager<ApplicationUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly CarsRepositories _repo;
-        private IHostingEnvironment _environment;
+        private readonly IHostingEnvironment _environment;
 
         public CarsController(CarsInfoContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IHostingEnvironment environment)
         {
@@ -81,16 +81,18 @@ namespace CarsInfoWeb.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateCar(Car newCar,IFormFile pictureFile)
+        public async Task<IActionResult> CreateCar(/*[Bind("Make","Model","Price","Year","Mileage","Color","Fuel","Type")]*/Car newCar, IFormFile pictureFile)
         {
             if (ModelState.IsValid)
             {
                 var user = await _userManager.GetUserAsync(User);
                 if (pictureFile != null)
                 {
-                    if (pictureFile.ContentType.Contains("image"))
-                    {
+                    var extension = Path.GetExtension(pictureFile.FileName).ToLower();
 
+                    if ((extension == ".jpg") || (extension == ".png") || (extension == ".jpeg") ||
+                        (extension == ".gif"))
+                    {
                         var uploadPath = Path.Combine(_environment.WebRootPath, "users_uploads");
                         Directory.CreateDirectory(Path.Combine(uploadPath, user.Id));
                         string fileName = Path.GetFileName(pictureFile.FileName);
@@ -108,8 +110,14 @@ namespace CarsInfoWeb.Controllers
                     }
                     else
                     {
-                        newCar.Picture = "";
+                        ModelState.AddModelError("", "Unsupported file format.");
+                        return View(newCar);
+
                     }
+                }
+                else
+                {
+                    newCar.Picture = "";
                 }
                 newCar.UserId = user.Id;
                 newCar =  _repo.CreateCar(newCar);

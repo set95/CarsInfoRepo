@@ -2,7 +2,7 @@
 @using CarsInfoWeb.Models
 @model CarsInfoWeb.Models.Car
 
-@Html.ValidationSummary()
+
 <form asp-controller="Cars" asp-action="CreateCar" asp-antiforgery="true" enctype="multipart/form-data">
     <dl>
         <dt><b>Make:</b></dt>
@@ -38,10 +38,11 @@
     </dl>
     <dl>
         <dt><b>Image:</b></dt>
-        <dd><input type="file" name="Image" accept=".png, .jpg, .jpeg"/></dd>
+        <dd><input type="file" id="pictureFile" name="pictureFile" accept=".png, .jpg, .jpeg .gif"/></dd>
     </dl>
     <dl>
         <dt>&nbsp;</dt>
         <dd><button type="submit">Save</button></dd>
     </dl>
 </form>
+@Html.ValidationSummary()
