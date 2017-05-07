@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CarsInfoWeb.Models;
 using CarsInfoWeb.Repositories;
+using CarsInfoWeb.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Hosting.Internal;
@@ -113,6 +115,8 @@ namespace CarsInfoWeb.Controllers
                     newCar.Picture = "";
                 }
                 newCar.UserId = user.Id;
+               // newCar.DateTimeAdded = DateTime.Now;
+
                 newCar =  _repo.CreateCar(newCar);
                 return RedirectToAction("Index","Cars");
             }
@@ -195,17 +199,22 @@ namespace CarsInfoWeb.Controllers
                     car.Picture = "";
                 }
 
-                //// if user wants to use  the old picture
-                //if (car.Picture == "")
-                //{
-                //    var currentcar = _repo.GetCar(car.CarId);
-                //    car.Picture = currentcar.Picture;
-                //}
-
                 _repo.EditCar(car);
                 return RedirectToAction("Index", "Cars");
             }
             return View("Edit", car);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetCarsByCriteria(SearchCarsViewModel car)
+        {
+            if (ModelState.IsValid)
+            {
+
+             //  IEnumerable<Car> cars  =  _repo.GetSearchedCars(car);
+
+            }
+            return View();
         }
 
     }

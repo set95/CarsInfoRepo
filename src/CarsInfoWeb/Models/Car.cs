@@ -13,16 +13,7 @@ namespace CarsInfoWeb.Models
         public int CarId { get; set; }
         public Fuel Fuel { get; set; }
         public CarType Type { get; set; }
-
-       /* public Car(string brand, string model, string fuel, string type, decimal price)
-        {
-            this.Brand = brand;
-            this.Model = model;
-            this.Fuel = fuel;
-            this.Type = type;
-            this.Price = price;
-        }
-        */
+   
     }
     
 }

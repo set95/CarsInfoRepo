@@ -5,6 +5,7 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
 using CarsInfoWeb.Models;
+using CarsInfoWeb.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
@@ -56,11 +57,19 @@ namespace CarsInfoWeb.Repositories
         }
 
         public void EditCar(Car editCar)
-        {
-            //Car car = db.Cars.FirstOrDefault(c => c.CarId == editCar.CarId);
-           // if (editCar.Picture == "") editCar.Picture = car.Picture;
+        {    
             db.Cars.Update(editCar);
             db.SaveChanges();
         }
+
+        //public IEnumerable<Car> GetSearchedCars(SearchCarsViewModel cars)
+        //{
+        //    var elements = from element in db.Cars
+        //                   orderby element.DateTimeAdded descending
+        //                   //where element.Make = cars.Make
+        //                   where element.Model == cars.Model
+        //                   select element;
+        //    return elements;
+        //}
     }
 }
