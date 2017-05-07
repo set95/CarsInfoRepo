@@ -46,5 +46,20 @@ namespace CarsInfoWeb.Repositories
             db.SaveChanges();
             return true;
         }
+
+        public bool IsCarValid(int carId)
+        {
+            var car = db.Cars.Find(carId);
+            if (car != null) return true;
+            return false;
+        }
+
+        public void EditCar(Car car)
+        {
+            var editCar = db.Cars.FirstOrDefault(c => c.CarId == car.CarId);
+            editCar = car;
+            db.Cars.Update(editCar);
+            db.SaveChanges();
+        }
     }
 }
