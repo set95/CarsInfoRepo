@@ -99,10 +99,7 @@ namespace CarsInfoWeb.Controllers
                         string fileName = Path.GetFileName(pictureFile.FileName);
                         if (fileName != null)
                         {
-                            using (
-                                FileStream fs = new FileStream(Path.Combine(uploadPath, user.Id, fileName),
-                                    FileMode.Create)
-                            )
+                            using (FileStream fs = new FileStream(Path.Combine(uploadPath, user.Id, fileName),FileMode.Create))
                             {
                                 await pictureFile.CopyToAsync(fs);
                                 newCar.Picture = fileName;
@@ -185,10 +182,7 @@ namespace CarsInfoWeb.Controllers
                         string fileName = Path.GetFileName(pictureFile.FileName);
                         if (fileName != null)
                         {
-                            using (
-                                FileStream fs = new FileStream(Path.Combine(userFolderPath, fileName),
-                                    FileMode.Create)
-                            )
+                            using ( FileStream fs = new FileStream(Path.Combine(userFolderPath, fileName),FileMode.Create))
                             {
                                 await pictureFile.CopyToAsync(fs);
                                 car.Picture = fileName;
@@ -199,13 +193,19 @@ namespace CarsInfoWeb.Controllers
                     {
                         ModelState.AddModelError("", "Unsupported file format.");
                         return View(car);
-
                     }
                 }
                 else
                 {
                     car.Picture = "";
                 }
+
+                //// if user wants to use  the old picture
+                //if (car.Picture == "")
+                //{
+                //    var currentcar = _repo.GetCar(car.CarId);
+                //    car.Picture = currentcar.Picture;
+                //}
 
                 _repo.EditCar(car);
                 return RedirectToAction("Index", "Cars");

@@ -27,9 +27,10 @@ namespace CarsInfoWeb.Repositories
             return newCar;
         }
 
-        public Car GetCar(int carKey)
+        public Car GetCar(int id)
         {
-            return db.Cars.FirstOrDefault(c => c.CarId == carKey);
+            Car car = db.Cars.FirstOrDefault(c => c.CarId == id);
+            return car;
         }
 
         public ICollection<Car> GetAllCars()
@@ -54,10 +55,10 @@ namespace CarsInfoWeb.Repositories
             return false;
         }
 
-        public void EditCar(Car car)
+        public void EditCar(Car editCar)
         {
-            var editCar = db.Cars.FirstOrDefault(c => c.CarId == car.CarId);
-            editCar = car;
+            //Car car = db.Cars.FirstOrDefault(c => c.CarId == editCar.CarId);
+           // if (editCar.Picture == "") editCar.Picture = car.Picture;
             db.Cars.Update(editCar);
             db.SaveChanges();
         }

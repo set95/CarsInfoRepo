@@ -40,6 +40,10 @@
         <dd><input type="file" id="pictureFile" name="pictureFile" accept=".png, .jpg, .jpeg .gif" /></dd>
     </dl>
     <dl>
+        <input type="hidden" asp-for="CarId" value="@Model.CarId" />
+        <input type="hidden" asp-for="UserId" value="@Model.UserId" />
+    </dl>
+    <dl>
         <dt>&nbsp;</dt>
         <dd><button type="submit">Save</button></dd>
     </dl>
