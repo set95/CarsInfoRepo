@@ -11,48 +11,20 @@
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how to build ASP.NET apps that can run anywhere.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
+            <img src="~/images/bar1.jpg" alt="ASP.NET" class="img-responsive" />
+            
         </div>
         <div class="item">
-            <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    There are powerful new features in Visual Studio for building modern web apps.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
+            <img src="~/images/bar2.jpg" alt="Visual Studio" class="img-responsive" />
+           
         </div>
         <div class="item">
-            <img src="~/images/banner3.svg" alt="Package Management" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Bring in libraries from NuGet, Bower, and npm, and automate tasks using Grunt or Gulp.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525029&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
+            <img src="~/images/bar3.jpg" alt="Package Management" class="img-responsive" />
+           
         </div>
         <div class="item">
-            <img src="~/images/banner4.svg" alt="Microsoft Azure" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
+            <img src="~/images/bar4.jpg" alt="Microsoft Azure" class="img-responsive" />
+           
         </div>
     </div>
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -65,45 +37,130 @@
     </a>
 </div>
 
-<div class="row">
-    <div class="col-md-3">
-        <h2>Application uses Change2</h2>
-        <ul>
-            <li>Sample page... </li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=518004">Bower</a> for managing client-side libraries</li>
-            <li>Theming using <a href="http://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
-        </ul>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Latest added</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+                <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+
+                <div class="clearfix hidden-sm-up"></div>
+
+                <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+                <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-3">
-        <h2>How to</h2>
-        <ul>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699562">Add an appsetting in config and access it in app.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699316">Use logging to log a message.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699317">Add packages using NuGet.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699318">Add client packages using Bower.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
-        </ul>
+
+</section>
+
+<hr />
+
+<section id="find">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Find car</h2>
+                <form method="post" data-form-output="form-output-global" class="rd-mailform text-left" novalidate="novalidate">
+
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label focus not-empty">Make:</label>
+                                <select id="form-car-search-make" name="make" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                    <option value="1">Enter car make...</option>
+                                    <option value="2">Audi</option>
+                                    <option value="3">Acura</option>
+                                    <option value="4">BMW</option>
+                                    <option value="5">Chevrolet</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="form-group">
+                                <label  class="form-label form-label-outside rd-input-label focus not-empty">Model:</label>
+                                <select id="form-car-search-model" name="model" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                    <option value="1">Enter model</option>
+                                    <option value="2">x2 series</option>
+                                    <option value="3">x3 series</option>
+                                    <option value="4">x4 series</option>
+                                    <option value="5">x5 series</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label focus not-empty">Body Type:</label>
+                                <select id="form-car-search-body-type" name="body-type" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                    <option value="1">Enter</option>
+                                    <option value="2">Hatchback</option>
+                                    <option value="3">Mini-MPVs</option>
+                                    <option value="4">Crossovers</option>
+                                    <option value="5">Coupes</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        
+                        
+                        <div class="col-sm-3 col-lg-2">
+                            <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label"> Min Year:</label>
+                                <input id="form-car-search-min-year" type="text" name="min-year" placeholder="0" class="form-control form-control-has-validation form-control-last-child"><span class="form-validation"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-lg-2">
+                            <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label"> Max Year:</label>
+                                <input id="form-car-search-max-year" type="text" name="max-year" placeholder="0" class="form-control form-control-has-validation form-control-last-child"><span class="form-validation"></span>
+                            </div>
+                        </div>
+            
+                        <div class="col-sm-4 col-lg-4">
+                            <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label focus not-empty">Color</label>
+                                <select id="form-quote-color" name="color" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                    <option value="1">No</option>
+                                    <option value="2">Black</option>
+                                    <option value="3">White</option>
+                                    <option value="4">Red</option>
+                                    <option value="5">Blue</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-lg-2">
+                            <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label"> Min Price:</label>
+                                <input id="form-quote-height" type="text" name="height" placeholder="0" class="form-control form-control-has-validation form-control-last-child"><span class="form-validation"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-lg-2">
+                            <div class="form-group">
+                                <label  class="form-label form-label-outside rd-input-label"> Max Price:</label>
+                                <input id="form-quote-width" type="text" name="width" placeholder="1" class="form-control form-control-has-validation form-control-last-child"><span class="form-validation"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Search your car</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+
+            </div>
+        </div>
     </div>
-    <div class="col-md-3">
-        <h2>Overview</h2>
-        <ul>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET Core</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET Core such as Startup and middleware.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=398602">Working with Data</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=398603">Security</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699321">Client side development</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699322">Develop on different platforms</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Run & Deploy</h2>
-        <ul>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=517851">Run your app</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=517853">Run tools such as EF migrations and more</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
-        </ul>
-    </div>
-</div>
+</section>
