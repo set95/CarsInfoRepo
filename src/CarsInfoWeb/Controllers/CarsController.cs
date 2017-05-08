@@ -211,11 +211,10 @@ namespace CarsInfoWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-
-             //  IEnumerable<Car> cars  =  _repo.GetSearchedCars(car);
-
+            IEnumerable<Car> cars  = _repo.GetSearchedCars(car);
+                return  View("Index",cars);
             }
-            return View();
+            return View("Index",_repo.GetAllCars());
         }
 
     }
