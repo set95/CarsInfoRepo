@@ -13,10 +13,10 @@ namespace CarsInfoWeb.ViewModel
 {
     public class SearchCarsViewModel
     {
-        [Required(AllowEmptyStrings = true)]
+ 
         public string Make { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
+    
         public string Model { get; set; }
 
         [Range(0,int.MaxValue),Display(Name = "Min Price(Euro)")]
@@ -34,8 +34,9 @@ namespace CarsInfoWeb.ViewModel
 
         [Range(0,int.MaxValue),Display(Name = "Mileage(km)")]
         public int Mileage { get; set; }
-        public Color? Color { get; set; }
-        public Fuel? Fuel { get; set; }
-        public CarType? Type { get; set; }
+
+        public Color? Color;
+        public Fuel? Fuel;
+        public CarType? Type;
     }
 }

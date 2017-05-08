@@ -68,16 +68,19 @@ namespace CarsInfoWeb.Repositories
         public IEnumerable<Car> GetSearchedCars(SearchCarsViewModel carCriteria)
         {
             IEnumerable<Car> cars = db.Cars.AsQueryable();
-            if(carCriteria.Model != null) cars = cars.Where(x => x.Model == carCriteria.Model);
-            if (carCriteria.Make != null) cars = cars.Where(x => x.Make == carCriteria.Make);
+            //bool test = (cars.First().Color == Color.Silver);
+            //string index = carCriteria.Color.ToString();
+            
             if (carCriteria.MaxPrice != 0) cars = cars.Where(x => x.Price <= carCriteria.MaxPrice);
             if (carCriteria.MinPrice != 0) cars = cars.Where(x => x.Price >= carCriteria.MinPrice);
             if (carCriteria.Mileage != 0) cars = cars.Where(x => x.Mileage <= carCriteria.Mileage);
             if (carCriteria.MaxYear != 0) cars = cars.Where(x => x.Year <= carCriteria.MaxYear);
             if (carCriteria.MinYear != 0) cars = cars.Where(x => x.Year >= carCriteria.MinYear);
-            if(carCriteria.Color.ToString()!= null) cars = cars.Where(x => x.Color == carCriteria.Color);
-            if (carCriteria.Fuel.ToString() != null) cars = cars.Where(x => x.Fuel == carCriteria.Fuel);
-            if (carCriteria.Type.ToString() != null) cars = cars.Where(x => x.Type == carCriteria.Type);
+            if (carCriteria.Color != null) cars = cars.Where(x => x.Color == carCriteria.Color);
+            if (carCriteria.Fuel != null) cars = cars.Where(x => x.Fuel == carCriteria.Fuel);
+            if (carCriteria.Type != null) cars = cars.Where(x => x.Type == carCriteria.Type);
+           //if (carCriteria.Model != null) cars = cars.Where(x => x.Model == carCriteria.Model);
+           //if (carCriteria.Make != null) cars = cars.Where(x => x.Make == carCriteria.Make);
             return cars;
         }
     }
