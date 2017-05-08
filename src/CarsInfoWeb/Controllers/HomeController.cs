@@ -31,7 +31,7 @@ namespace CarsInfoWeb.Controllers
                 HomeViewModel view = new HomeViewModel()
                 {
                     modelCar = _repo.GetAllCars(),
-                    modelSearch = new SearchCarsViewModel()
+                    //modelSearch = new SearchCarsViewModel()
                 };
                 return View(view);
             }

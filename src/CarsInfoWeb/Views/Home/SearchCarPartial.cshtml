@@ -1,0 +1,134 @@
+﻿@using System.Threading.Tasks
+@using CarsInfoWeb.ViewModel
+@model SearchCarsViewModel
+
+<section id="find">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Find car</h2>
+
+                <form method="post" data-form-output="form-output-global" class="rd-mailform text-left" novalidate="novalidate" asp-controller="Cars" asp-action="GetCarsByCriteria" asp-antiforgery="true">
+
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label focus not-empty">Make:</label>
+                                <select id="form-car-search-make" name="make" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true" asp-for="Make">
+                                    <option />
+                                    <option value="1">Audi</option>
+                                    <option value="2">Acura</option>
+                                    <option value="3">BMW</option>
+                                    <option value="4">Chevrolet</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label focus not-empty">Model:</label>
+                                <select id="form-car-search-model" name="model" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true" asp-for="Model">
+                                    <option />
+                                    <option value="1">x2 series</option>
+                                    <option value="2">x3 series</option>
+                                    <option value="3">x4 series</option>
+                                    <option value="4">x5 series</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label focus not-empty">Body Type:</label>
+
+                                <select id="form-car-search-body-type" name="body-type" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true" asp-for="Type">
+                                    <option value="0"></option>
+                                    <option value="SUV">SUV</option>
+                                    <option value="Truck">Truck</option>
+                                    <option value="Sedan">Sedan</option>
+                                    <option value="Van">Van</option>
+                                    <option value="Coupe">Coupe</option>
+                                    <option value="Wagon">Wagon</option>
+                                    <option value="Cabrio">Cabrio</option>
+                                    <option value="Hatchback">Hatchback</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+
+                        <div class="col-sm-3 col-lg-2">
+                            <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label"> Min Year:</label>
+                                <input id="form-car-search-min-year" type="text" name="min-year" placeholder="0" class="form-control form-control-has-validation form-control-last-child" asp-for="MinYear"><span class="form-validation"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-lg-2">
+                            <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label"> Max Year:</label>
+                                <input id="form-car-search-max-year" type="text" name="max-year" placeholder="0" class="form-control form-control-has-validation form-control-last-child" asp-for="MaxYear"><span class="form-validation"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-lg-4">
+                            <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label focus not-empty">Color</label>
+                                <select id="form-quote-color" name="color" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true" asp-for="Color">
+                                    <option />
+                                    <option value="0">White</option>
+                                    <option value="1">Silver</option>
+                                    <option value="2">Black</option>
+                                    <option value="3">Grey</option>
+                                    <option value="4">Blue</option>
+                                    <option value="5">Red</option>
+                                    <option value="6">Brown</option>
+                                    <option value="7">Green</option>
+                                    <option value="8">Yellow</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-lg-2">
+                            <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label"> Min Price:</label>
+                                <input id="form-quote-height" type="text" name="height" placeholder="0" class="form-control form-control-has-validation form-control-last-child" asp-for="MinPrice"><span class="form-validation"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-lg-2">
+                            <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label"> Max Price:</label>
+                                <input id="form-quote-width" type="text" name="width" placeholder="1" class="form-control form-control-has-validation form-control-last-child" asp-for="MaxPrice"><span class="form-validation"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            <div class="form-group">
+                                <label class="form-label form-label-outside rd-input-label focus not-empty">Fuel type:</label>
+                                <select id="form-quote-color" name="color" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true" asp-for="Fuel">
+                                    <option />
+                                    <option value="0">Diesel</option>
+                                    <option value="1">Benzin</option>
+                                    <option value="2">LPG</option>
+                                    <option value="3">Methane</option>
+                                    <option value="4">Hybrid</option>
+                                    <option value="5">Electric</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Search car</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+
+            </div>
+        </div>
+    </div>
+</section>
