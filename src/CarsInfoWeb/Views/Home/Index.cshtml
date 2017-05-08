@@ -59,7 +59,14 @@
                         <div class="col-md-4">
                             <div class="offer-wrap">
                                 
-                                            <img src="~/users_uploads/@car.UserId/@car.Picture" id="latestCars" />
+                                            @if (!String.IsNullOrEmpty(car.Picture))
+                                            {
+                                                <img src="~/users_uploads/@car.UserId/@car.Picture" id="latestCars" />
+                                            }
+                                            else
+                                            {
+                                                <img src="~/images/images.png" id="latestCars" />
+                                            }
                                             <div class="newCars">
                                                 <span class="label label-success">NEW</span>
                                             </div>
