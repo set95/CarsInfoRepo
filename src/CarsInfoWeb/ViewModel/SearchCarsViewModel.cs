@@ -20,23 +20,23 @@ namespace CarsInfoWeb.ViewModel
         public string Model { get; set; }
 
         [Range(0,int.MaxValue),Display(Name = "Min Price(Euro)")]
-        public decimal MinPrice { get; set; }
+        public decimal? MinPrice { get; set; }
 
         [Range(0, int.MaxValue), Display(Name = "Max Price(Euro)")]
-        public decimal MaxPrice { get; set; }
+        public decimal? MaxPrice { get; set; }
 
 
-        [Range(0, Int32.MaxValue, ErrorMessage = "Invalid Year")]
-        public int MinYear { get; set; }
+        [Range(0, 2020, ErrorMessage = "Invalid Year")]
+        public int? MinYear { get; set; }
 
         [Range(0, 2020, ErrorMessage = "Please enter valid Year"), Display(Name = "Max Year")]
-        public int MaxYear { get; set; }
+        public int? MaxYear { get; set; }
 
-        [Range(0,int.MaxValue),Display(Name = "Mileage(km)")]
-        public int Mileage { get; set; }
+        [Range(0,2000000),Display(Name = "Mileage(km)")]
+        public int? Mileage { get; set; }
 
-        public Color? Color;
-        public Fuel? Fuel;
-        public CarType? Type;
+        public string Color { get; set; }
+        public string Fuel { get; set; }
+        public string Type { get; set; }
     }
 }

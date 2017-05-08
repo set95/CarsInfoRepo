@@ -75,7 +75,7 @@
                                     <div id="accordion">
                                         <div class="panel-default">
                                             <div class="panel-heading">
-                                                <h2 class="text-center">@car.Make @car.Model</h2>
+                                                <h2 class="text-center">@car.Make @car.Model </h2>
                                                 <button type="button" class="btn btn-info center-block" data-toggle="collapse" data-target="#moreInfo">More information</button>
                                                 <div id="moreInfo" class="collapse">
                                                     <b>Mileage: </b>@car.Mileage <br />
@@ -101,4 +101,4 @@
 
 <hr />
 
-@{await Html.RenderPartialAsync("SearchCarPartial",Model.modelSearch); }
+@{await Html.RenderPartialAsync("SearchCarPartial2",Model.modelSearch); }

@@ -30,8 +30,14 @@ namespace CarsInfoWeb.Repositories
 
         public Car GetCar(int id)
         {
-            Car car = db.Cars.FirstOrDefault(c => c.CarId == id);
+            var car = db.Cars.FirstOrDefault(x => x.CarId == id);
             return car;
+        }
+
+        public IEnumerable<Car> GetMyCars(string id)
+        {
+            var cars = db.Cars.Where(x => x.UserId == id);
+            return cars;
         }
 
         
@@ -68,19 +74,17 @@ namespace CarsInfoWeb.Repositories
         public IEnumerable<Car> GetSearchedCars(SearchCarsViewModel carCriteria)
         {
             IEnumerable<Car> cars = db.Cars.AsQueryable();
-            //bool test = (cars.First().Color == Color.Silver);
-            //string index = carCriteria.Color.ToString();
             
-            if (carCriteria.MaxPrice != 0) cars = cars.Where(x => x.Price <= carCriteria.MaxPrice);
-            if (carCriteria.MinPrice != 0) cars = cars.Where(x => x.Price >= carCriteria.MinPrice);
-            if (carCriteria.Mileage != 0) cars = cars.Where(x => x.Mileage <= carCriteria.Mileage);
-            if (carCriteria.MaxYear != 0) cars = cars.Where(x => x.Year <= carCriteria.MaxYear);
-            if (carCriteria.MinYear != 0) cars = cars.Where(x => x.Year >= carCriteria.MinYear);
-            if (carCriteria.Color != null) cars = cars.Where(x => x.Color == carCriteria.Color);
-            if (carCriteria.Fuel != null) cars = cars.Where(x => x.Fuel == carCriteria.Fuel);
-            if (carCriteria.Type != null) cars = cars.Where(x => x.Type == carCriteria.Type);
-           //if (carCriteria.Model != null) cars = cars.Where(x => x.Model == carCriteria.Model);
-           //if (carCriteria.Make != null) cars = cars.Where(x => x.Make == carCriteria.Make);
+            if (carCriteria.MaxPrice != null) cars = cars.Where(x => x.Price <= carCriteria.MaxPrice);
+            if (carCriteria.MinPrice != null) cars = cars.Where(x => x.Price >= carCriteria.MinPrice);
+            if (carCriteria.Mileage != null) cars = cars.Where(x => x.Mileage <= carCriteria.Mileage);
+            if (carCriteria.MaxYear !=  null) cars = cars.Where(x => x.Year <= carCriteria.MaxYear);
+            if (carCriteria.MinYear != null) cars = cars.Where(x => x.Year >= carCriteria.MinYear);
+            if (carCriteria.Color != null) cars = cars.Where(x => x.Color.ToString() == carCriteria.Color);
+            if (carCriteria.Fuel != null) cars = cars.Where(x => x.Fuel.ToString() == carCriteria.Fuel);
+            if (carCriteria.Type != null) cars = cars.Where(x => x.Type.ToString() == carCriteria.Type);
+            if (carCriteria.Model != null) cars = cars.Where(x => x.Model == carCriteria.Model);
+            if (carCriteria.Make != null) cars = cars.Where(x => x.Make == carCriteria.Make);
             return cars;
         }
     }

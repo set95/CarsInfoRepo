@@ -34,17 +34,19 @@ namespace CarsInfoWeb.Controllers
             _environment = environment;
         }
 
-        public IActionResult GetCar(int id)
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> GetMyCars()
         {
-            var car = _repo.GetCar(id);
-            if (car == null)
+            var user = await _userManager.GetUserAsync(User);
+            var myCars =  _repo.GetMyCars(user.Id);
+            if (myCars == null)
             {
-                ViewBag.Message = id;
-                return View("NoCarFoudError");
+                ViewBag.Message = "You have not added any cars";
+                return View();
             }
-            //ViewBag.Title = car.Brand + " " + car.Brand;
-
-            return View(car);
+  
+            return View(myCars);
         }
 
         
@@ -206,13 +208,14 @@ namespace CarsInfoWeb.Controllers
             return View("Edit", car);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> GetCarsByCriteria(SearchCarsViewModel car)
+        [HttpGet]
+        public IActionResult GetCarsByCriteria(SearchCarsViewModel car)
         {
+           // bool test = (Color.White.ToString() == "White"); 
             if (ModelState.IsValid)
             {
             IEnumerable<Car> cars  = _repo.GetSearchedCars(car);
-                return  View("Index",cars);
+                return View("Index",cars);
             }
             return View("Index",_repo.GetAllCars());
         }

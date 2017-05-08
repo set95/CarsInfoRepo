@@ -35,10 +35,17 @@
             <b>Price: </b>@car.Price <br />
             <b>Style type: </b>@car.Type <br />
             <b>Fuel type: </b>@car.Fuel <br />
+            @if (User.Identity.IsAuthenticated)//User.IsInRole("Admin") &&
+            {
+                <a asp-action="Edit" asp-route-id="@car.CarId">Edit</a>
+                @Html.Raw('|');
+                <a asp-action="Delete" asp-route-id="@car.CarId">Delete</a>
+            }
+
             <hr />
-            <a asp-action="Edit" asp-route-id="@car.CarId">Edit</a> |
-            <a asp-action="Delete" asp-route-id="@car.CarId">Delete</a>
+           
+
         </div>
-        
+
     }
 </div>

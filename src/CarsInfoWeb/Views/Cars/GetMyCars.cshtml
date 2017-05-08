@@ -1,0 +1,40 @@
+﻿@using System.Threading.Tasks
+@using CarsInfoWeb.Models
+@model IEnumerable<Car>
+@{
+    ViewData["Title"] = "My Cars";
+}
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+
+<br/>
+@if (Model != null)
+{
+    foreach (var car in Model)
+    {
+        <div class="col-sm-3 col-md-3">
+            @if (!String.IsNullOrEmpty(car.Picture))
+            {
+                <img src="~/users_uploads/@car.UserId/@car.Picture" class="car-picture"/>
+            }
+            else
+            {
+                <img src="~/images/images.png" class="car-picture"/>
+            }
+        </div>
+        <div class="col-sm-3 col-lg-2">
+            <b>Make: </b>@car.Make <br/>
+            <b>Model: </b>@car.Model <br/>
+            <b>Mileage: </b>@car.Mileage <br/>
+            <b>Price: </b>@car.Price <br/>
+            <b>Style type: </b>@car.Type <br/>
+            <b>Fuel type: </b>@car.Fuel <br/>
+            <a asp-action="Edit" asp-route-id="@car.CarId">Edit</a>
+            @Html.Raw('|');
+            <a asp-action="Delete" asp-route-id="@car.CarId">Delete</a>
+            <hr/>
+            }
+
+        </div>
+    }
+}

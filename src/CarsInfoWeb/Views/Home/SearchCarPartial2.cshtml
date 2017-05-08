@@ -1,0 +1,118 @@
+﻿@using CarsInfoWeb.Models
+@model CarsInfoWeb.ViewModel.SearchCarsViewModel
+
+<div class="container">
+    <div class="row">
+        <br />
+        <form method="get" asp-controller="Cars" asp-action="GetCarsByCriteria" asp-antiforgery="true">
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Make: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Enter make" asp-for="Make">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Model: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Enter model" asp-for="Model">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Min Price: </label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" placeholder="Enter min price" asp-for="MinPrice">
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Max Price: </label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" placeholder="Enter max price" asp-for="MaxPrice">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Min Year: </label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" placeholder="Enter year from" asp-for="MinYear">
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Max Year: </label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" placeholder="Enter year to" asp-for="MaxYear">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Maximum Mileage: </label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" placeholder="Enter Mileage" asp-for="Mileage">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Color: </label>
+                <div class="col-sm-10">
+                    @*<select asp-for="Color" asp-items="Html.GetEnumSelectList<Color>()"></select>*@
+                    <select asp-for="Color" id="Color" name="Color">
+                        @*{White,Silver,Black,Grey,Blue,Red,Brown,Green,Yellow,Other}*@
+                        <option selected="selected" value="">-------</option>
+                        <option value="White">White</option>
+                        <option value="Silver">Silver</option>
+                        <option value="Black">Black</option>
+                        <option value="Grey">Grey</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Red">Red</option>
+                        <option value="Brown">Brown</option>
+                        <option value="Green">Green</option>
+                        <option value="Yellow">Yellow</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Fuel: </label>
+                <div class="col-sm-10">
+                    @*<select asp-for="Fuel" asp-items="Html.GetEnumSelectList<Fuel>()"></select>*@
+                    <select asp-for="Fuel"  id="Fuel" name="Fuel">
+                        <option selected="selected" value="">-------</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Benzin">Benzin</option>
+                        <option value="LPG">LPG</option>
+                        <option value="Methane">Methane</option>
+                        <option value="Hybrid">Hybrid</option>
+                        <option value="Electric">Electric</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Type: </label>
+                <div class="col-sm-10">
+                    @*<select asp-for="Type" asp-items="Html.GetEnumSelectList<CarType>()"></select>*@
+                    <select asp-for="Type" id="Type" name="Type">
+                        <option selected="selected" value="">-------</option>
+                        <option value="SUV">SUV</option>
+                        <option value="Truck">Truck</option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="Van">Van</option>
+                        <option value="Coupe">Coupe</option>
+                        <option value="Wagon">Wagon</option>
+                        <option value="Cabrio">Cabrio</option>
+                        <option value="Hatchback">Hatchback</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+    </div>
+</div>
+@Html.ValidationSummary()
