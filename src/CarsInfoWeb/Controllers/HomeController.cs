@@ -6,6 +6,7 @@ using CarsInfoWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Web;
 using CarsInfoWeb.Repositories;
+using CarsInfoWeb.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Type = CarsInfoWeb.Models.CarType;
 
@@ -27,7 +28,12 @@ namespace CarsInfoWeb.Controllers
 
             if (_repo.GetAllCars() != null)
             {
-                return View(_repo.GetAllCars());
+                HomeViewModel view = new HomeViewModel()
+                {
+                    modelCar = _repo.GetAllCars(),
+                    modelSearch = new SearchCarsViewModel()
+                };
+                return View(view);
             }
 
             return View();
