@@ -99,9 +99,11 @@ namespace CarsInfoWeb.Controllers
                     {
                         var uploadPath = Path.Combine(_environment.WebRootPath, "users_uploads");
                         Directory.CreateDirectory(Path.Combine(uploadPath, user.Id));
-                        string fileName = Path.GetFileName(pictureFile.FileName);
-                        if (fileName != null)
+                        Guid guid = new Guid();
+                        if (Path.GetFileName(pictureFile.FileName) != null)
                         {
+                            string fileName = Guid.NewGuid().ToString(); //Path.GetFileName(pictureFile.FileName));
+
                             using (FileStream fs = new FileStream(Path.Combine(uploadPath, user.Id, fileName),FileMode.Create))
                             {
                                 await pictureFile.CopyToAsync(fs);
