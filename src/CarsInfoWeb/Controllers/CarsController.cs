@@ -179,16 +179,18 @@ namespace CarsInfoWeb.Controllers
                         (extension == ".gif"))
                     {
                         var userFolderPath = Path.Combine(_environment.WebRootPath, "users_uploads",user.Id);
-                        var filePath = Path.Combine(_environment.WebRootPath,"users.uploads" + car.Picture);
-                        
-                           System.IO.File.Delete(filePath);
-                        
+                        if ((car.Picture!= null )&&(car.Picture!=""))
+                        {
+                            var filePath = Path.Combine(_environment.WebRootPath, "users_uploads", user.Id, car.Picture);
+                            System.IO.File.Delete(filePath);
+                        }
+                       
 
                         if (Path.GetFileName(pictureFile.FileName) != null)
                         {
-                            string fileName = Guid.NewGuid()+ Path.GetExtension(pictureFile.FileName); //Path.GetFileName(pictureFile.FileName));
+                            string fileName = Guid.NewGuid().ToString()+ extension; //Path.GetFileName(pictureFile.FileName));
 
-                            using (FileStream fs = new FileStream(Path.Combine(userFolderPath, user.Id, fileName), FileMode.Create))
+                            using (FileStream fs = new FileStream(Path.Combine(userFolderPath, fileName), FileMode.Create))
                             {
                                 await pictureFile.CopyToAsync(fs);
                                 car.Picture = fileName;
