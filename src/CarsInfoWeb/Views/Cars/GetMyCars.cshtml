@@ -30,10 +30,9 @@
             <b>Style type: </b>@car.Type <br/>
             <b>Fuel type: </b>@car.Fuel <br/>
             <a asp-action="Edit" asp-route-id="@car.CarId">Edit</a>
-            @Html.Raw('|');
+            @Html.Raw('|')
             <a asp-action="Delete" asp-route-id="@car.CarId">Delete</a>
-            <hr/>
-            }
+            <hr/>          
 
         </div>
     }

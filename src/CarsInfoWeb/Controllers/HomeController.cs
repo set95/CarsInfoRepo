@@ -30,7 +30,7 @@ namespace CarsInfoWeb.Controllers
             {
                 HomeViewModel view = new HomeViewModel()
                 {
-                    modelCar = _repo.GetAllCars(),
+                    modelCar = _repo.GetLastAddedCars(),
                     //modelSearch = new SearchCarsViewModel()
                 };
                 return View(view);
@@ -41,17 +41,6 @@ namespace CarsInfoWeb.Controllers
 
         public IActionResult About()
         {
-            /*
-            _context.CatalogCars.Add(new CarsCatalog()
-            {
-                Cars = new List<Vehicle>()
-            });
-            _context.SaveChanges();
-            _context.Cars.Add(car);
-            
-            ViewData["Message"] = _context.CatalogCars.Count();
-            _context.SaveChanges();
-            */
             return View();
         }
 
@@ -70,18 +59,7 @@ namespace CarsInfoWeb.Controllers
 
         public IActionResult Admin()
         {
-            /*
-            _context.CatalogCars.Add(new CarsCatalog()
-            {
-                Cars = new List<Vehicle>()
-            });
-            _context.SaveChanges();
-            _context.Cars.Add(car);
-            
-            ViewData["Message"] = _context.CatalogCars.Count();
-            _context.SaveChanges();
-            */
-            return RedirectToAction("Login","Login");
+           return RedirectToAction("Login","Login");
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CarsInfoWeb.Models;
 using CarsInfoWeb.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Remotion.Linq.Clauses;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -86,6 +87,13 @@ namespace CarsInfoWeb.Repositories
             if (carCriteria.Model != null) cars = cars.Where(x => x.Model == carCriteria.Model);
             if (carCriteria.Make != null) cars = cars.Where(x => x.Make == carCriteria.Make);
             return cars;
+        }
+
+        public IEnumerable<Car> GetLastAddedCars()
+        {
+            var cars = db.Cars.AsEnumerable().OrderByDescending(p => p.CarId).Take(3);
+            return cars;
+
         }
     }
 }

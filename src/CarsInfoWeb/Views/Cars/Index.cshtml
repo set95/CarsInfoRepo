@@ -35,7 +35,7 @@
             <b>Price: </b>@car.Price <br />
             <b>Style type: </b>@car.Type <br />
             <b>Fuel type: </b>@car.Fuel <br />
-            @if (User.Identity.IsAuthenticated)//User.IsInRole("Admin") &&
+            @if ((User.Identity.IsAuthenticated)&&(User.Identity.Name == "n_spirov@abv.bg"))
             {
                 <a asp-action="Edit" asp-route-id="@car.CarId">Edit</a>
                 @Html.Raw('|');
