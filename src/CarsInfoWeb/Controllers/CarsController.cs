@@ -99,10 +99,9 @@ namespace CarsInfoWeb.Controllers
                     {
                         var uploadPath = Path.Combine(_environment.WebRootPath, "users_uploads");
                         Directory.CreateDirectory(Path.Combine(uploadPath, user.Id));
-                        Guid guid = new Guid();
                         if (Path.GetFileName(pictureFile.FileName) != null)
                         {
-                            string fileName = Guid.NewGuid().ToString(); //Path.GetFileName(pictureFile.FileName));
+                            string fileName = Guid.NewGuid().ToString() + Path.GetExtension(pictureFile.FileName);//Path.GetFileName(pictureFile.FileName); //Guid.NewGuid().ToString();
 
                             using (FileStream fs = new FileStream(Path.Combine(uploadPath, user.Id, fileName),FileMode.Create))
                             {
@@ -180,13 +179,16 @@ namespace CarsInfoWeb.Controllers
                         (extension == ".gif"))
                     {
                         var userFolderPath = Path.Combine(_environment.WebRootPath, "users_uploads",user.Id);
+                        var filePath = Path.Combine(_environment.WebRootPath,"users.uploads" + car.Picture);
+                        
+                           System.IO.File.Delete(filePath);
+                        
 
-                        Directory.Delete(userFolderPath,true);
-                        Directory.CreateDirectory(userFolderPath);
-                        string fileName = Path.GetFileName(pictureFile.FileName);
-                        if (fileName != null)
+                        if (Path.GetFileName(pictureFile.FileName) != null)
                         {
-                            using ( FileStream fs = new FileStream(Path.Combine(userFolderPath, fileName),FileMode.Create))
+                            string fileName = Guid.NewGuid()+ Path.GetExtension(pictureFile.FileName); //Path.GetFileName(pictureFile.FileName));
+
+                            using (FileStream fs = new FileStream(Path.Combine(userFolderPath, user.Id, fileName), FileMode.Create))
                             {
                                 await pictureFile.CopyToAsync(fs);
                                 car.Picture = fileName;
