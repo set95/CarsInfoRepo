@@ -93,7 +93,13 @@ namespace CarsInfoWeb.Repositories
         {
             var cars = db.Cars.AsEnumerable().OrderByDescending(p => p.CarId).Take(3);
             return cars;
+         }
 
+        public IEnumerable<String> GetAllPictures()
+        {
+            var carsImages = db.Cars.AsQueryable().Select(l => l.Picture).ToList();
+
+            return carsImages;
         }
     }
 }

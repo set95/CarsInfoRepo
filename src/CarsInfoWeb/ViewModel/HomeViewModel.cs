@@ -10,5 +10,6 @@ namespace CarsInfoWeb.ViewModel
     {
         public SearchCarsViewModel modelSearch { get; set; }
         public IEnumerable<Car> modelCar { get; set; }
+        public IEnumerable<string> carsPictures { get; set; }
     }
 }

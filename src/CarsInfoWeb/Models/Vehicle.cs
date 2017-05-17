@@ -24,7 +24,6 @@ namespace CarsInfoWeb.Models
         public Color Color { get; set; }
         [Display(Name = "Pricture of car")]
         public string Picture { get; set; }
-       // public DateTime DateTimeAdded { get; set; }///
         [ForeignKey("UserId")]
         public string UserId{ get; set; }
         

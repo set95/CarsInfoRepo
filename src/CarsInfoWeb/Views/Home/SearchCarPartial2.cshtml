@@ -9,7 +9,16 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Make: </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="Enter make" asp-for="Make">
+                    <select class="selectpicker" asp-for="Make" id="Make" name="Make">
+                        <option selected="selected" value="">-------</option>
+                        <option value="Audi">Audi</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Chevrolet">Chevrolet</option>
+                        <option value="Mercedes Benz">Mercedes Benz</option>
+                        <option value="Porsche">Porsche</option>
+                        <option value="Tesla">Tesla</option>
+                        <option value="Ferrari">Ferrari</option>
+                    </select>
                 </div>
             </div>
 
